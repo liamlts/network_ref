@@ -19,6 +19,10 @@ int main(void) {
     listen(server_socket, 6); 
     int client_socket = accept(server_socket, NULL, NULL); 
     send(client_socket, server_message, sizeof(server_message), 0); 
+    char msg[256];
+    size_t bytes_sent = recv(client_socket, msg, sizeof(msg), 0);
+    printf("Client send the data: %s ", msg);
+    printf("%lu", bytes_sent);
     close(client_socket);
     return 0; 
 }

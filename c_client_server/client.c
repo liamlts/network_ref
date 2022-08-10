@@ -17,7 +17,9 @@ int main(void) {
         perror("There was an issue connecting\n"); 
     }
     char server_resp[256]; 
-    recv(network_socket, &server_resp, sizeof(server_resp), 0);
+    recv(network_socket, server_resp, sizeof(server_resp), 0);
     printf("Server send the data: %s", server_resp);
+    char msg[] = "Hello world!\n";
+    send(network_socket, msg, sizeof(msg), 0);
     return 0; 
 }
